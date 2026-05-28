@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baro Barber by Bartosz Włoch — Barbershop Gdańsk</title>
+<meta name="description" content="Baro Barber by Bartosz Włoch — barbershop w Gdańsku. Strzyżenie włosów i brody, combo, stylizacja. Ocena 5.0 na Booksy. Rezerwacja online.">
+<meta property="og:title" content="Baro Barber by Bartosz Włoch — Barbershop Gdańsk">
+<meta property="og:description" content="Strzyżenie włosów i brody, combo, stylizacja. Ocena 5.0 na Booksy.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0d3a2b;
+    --green-deep:#082019;
+    --green-soft:#14523c;
+    --gold:#c8a24c;
+    --gold-light:#e2c574;
+    --cream:#f5f1e8;
+    --ink:#1a1a1a;
+    --ink-soft:#444;
+    --muted:#6b6b6b;
+    --surface:#fff;
+
+    /* przezroczyste warianty marki */
+    --green-a92:rgba(8,32,25,.92);
+    --green-line:rgba(13,58,43,.12);
+    --green-line-soft:rgba(13,58,43,.18);
+    --gold-a25:rgba(200,162,76,.25);
+    --gold-a20:rgba(200,162,76,.2);
+    --cream-a80:rgba(245,241,232,.8);
+    --cream-a65:rgba(245,241,232,.75);
+
+    /* odstępy — skala 4px */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px;
+    --sp-6:24px; --sp-8:32px; --sp-12:48px; --sp-16:64px; --sp-22:90px;
+
+    /* zaokrąglenia */
+    --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-pill:30px;
+
+    /* cienie */
+    --shadow-1:0 8px 24px rgba(200,162,76,.35);
+    --shadow-2:0 12px 30px rgba(0,0,0,.4);
+    --shadow-3:0 20px 50px rgba(0,0,0,.5);
+
+    /* skala typografii */
+    --fs-sm:14px; --fs-base:17px; --fs-lg:18px; --fs-xl:24px;
+
+    /* fokus (dostępność) */
+    --focus:2px solid var(--gold-light);
+  }
+  :focus-visible{outline:var(--focus);outline-offset:3px;border-radius:var(--radius-sm)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+  h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:1}
+  .heading{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em}
+  .container{max-width:1140px;margin:0 auto;padding:0 var(--sp-6)}
+  a{color:inherit;text-decoration:none}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:var(--green-a92);backdrop-filter:blur(8px);border-bottom:1px solid var(--gold-a25)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav-logo{display:flex;align-items:center;color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.1em;line-height:1}
+  .nav-logo em{color:var(--gold-light);font-style:normal;margin-left:.28em}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--cream);font-family:'Oswald',sans-serif;font-weight:500;font-size:var(--fs-sm);letter-spacing:.08em;text-transform:uppercase;opacity:.85;transition:.2s}
+  .nav-links a:hover{opacity:1;color:var(--gold-light)}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--green-deep);font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:var(--sp-3) 26px;border-radius:var(--radius-sm);font-size:var(--fs-sm);transition:.2s;border:none;cursor:pointer}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-1)}
+  .btn:focus-visible{outline:var(--focus);outline-offset:3px}
+  .btn-outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold-light)}
+  .btn-outline:hover{background:var(--gold);color:var(--green-deep)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;width:44px;height:44px;line-height:1;padding:0}
+
+  /* HERO */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;background:radial-gradient(circle at 70% 30%,var(--green-soft),var(--green-deep));overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,var(--cream) 100%);opacity:.06}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2}
+  .hero-eyebrow{color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:.25em;text-transform:uppercase;font-size:var(--fs-sm);margin-bottom:18px}
+  .hero h1{color:var(--cream);font-size:clamp(54px,8vw,104px);margin-bottom:10px}
+  .hero h1 em{color:var(--gold);font-style:normal}
+  .hero p{color:var(--cream-a80);font-size:var(--fs-lg);max-width:480px;margin-bottom:var(--sp-8)}
+  .hero-cta{display:flex;gap:var(--sp-4);flex-wrap:wrap}
+  .hero-rating{margin-top:36px;display:flex;align-items:center;gap:var(--sp-3);color:var(--cream)}
+  .stars{color:var(--gold);font-size:20px;letter-spacing:2px}
+  .hero-rating small{color:var(--cream-a65)}
+  .hero-logo{display:flex;justify-content:center}
+  .hero-logo .logo-panel{background:radial-gradient(circle at 50% 45%,var(--cream),#e9e2d2);border:1px solid var(--gold-a25);border-radius:var(--radius-lg);padding:var(--sp-12);box-shadow:var(--shadow-3);max-width:380px;width:100%}
+  .hero-logo img{width:100%;display:block}
+
+  /* SECTIONS */
+  section{padding:var(--sp-22) 0}
+  .section-head{text-align:center;margin-bottom:54px}
+  .section-head .eyebrow{color:var(--green);font-family:'Oswald',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:13px}
+  .reviews .section-head .eyebrow{color:var(--gold-light)}
+  .section-head h2{font-size:clamp(38px,6vw,60px);color:var(--green);margin-top:var(--sp-2)}
+  .divider{width:60px;height:3px;background:var(--gold);margin:18px auto 0;border-radius:2px}
+
+  /* ABOUT */
+  .about{background:var(--surface)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-img{background:linear-gradient(135deg,var(--green),var(--green-deep));border-radius:var(--radius-md);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;padding:var(--sp-12)}
+  .about-img img{max-width:100%;filter:drop-shadow(var(--shadow-2))}
+  .about-photo{padding:0;overflow:hidden}
+  .about-photo img{width:100%;height:100%;object-fit:cover;filter:none}
+  .about h2{font-size:clamp(34px,5vw,52px);color:var(--green);margin-bottom:var(--sp-5)}
+  .about p{color:var(--ink-soft);margin-bottom:var(--sp-4);font-size:var(--fs-base)}
+  .about .badges{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin-top:var(--sp-6)}
+  .badge{background:var(--cream);border:1px solid var(--green-line);padding:var(--sp-2) var(--sp-4);border-radius:var(--radius-pill);font-size:var(--fs-sm);font-family:'Oswald',sans-serif;color:var(--green)}
+
+  /* SERVICES */
+  .services{background:var(--cream)}
+  .svc-cat{margin-bottom:var(--sp-12)}
+  .svc-cat h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:var(--fs-xl);color:var(--green);text-transform:uppercase;letter-spacing:.05em;margin-bottom:var(--sp-2);display:flex;align-items:center;gap:var(--sp-3)}
+  .svc-cat h3::after{content:"";flex:1;height:1px;background:var(--green-line-soft)}
+  .svc-list{display:grid;grid-template-columns:1fr 1fr;gap:6px var(--sp-12)}
+  .svc-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:var(--sp-3) 0;border-bottom:1px dashed rgba(13,58,43,.15)}
+  .svc-name{font-weight:500}
+  .svc-name small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+  .svc-dots{flex:1;border-bottom:1px dotted rgba(13,58,43,.3);margin:0 var(--sp-2);transform:translateY(-4px)}
+  .svc-price{font-family:'Oswald',sans-serif;font-weight:600;color:var(--green);white-space:nowrap;font-size:var(--fs-lg)}
+
+  /* REVIEWS */
+  .reviews{background:var(--green-deep);color:var(--cream)}
+  .reviews .section-head h2{color:var(--cream)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+  .rev-card{background:rgba(255,255,255,.04);border:1px solid var(--gold-a20);border-radius:var(--radius-md);padding:28px}
+  .rev-card .stars{font-size:16px;margin-bottom:var(--sp-4)}
+  .rev-card p{color:rgba(245,241,232,.88);font-size:15px;margin-bottom:18px}
+  .rev-card .who{font-family:'Oswald',sans-serif;letter-spacing:.05em;color:var(--gold-light);font-size:var(--fs-sm)}
+
+  /* CONTACT */
+  .contact{background:var(--surface)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12)}
+  .contact-info h3{font-family:'Oswald',sans-serif;font-weight:600;color:var(--green);font-size:var(--fs-lg);text-transform:uppercase;letter-spacing:.05em;margin:var(--sp-6) 0 6px}
+  .contact-info h3:first-child{margin-top:0}
+  .contact-info p,.contact-info a{color:var(--ink-soft);font-size:var(--fs-base)}
+  .contact-info a:hover{color:var(--green);text-decoration:underline}
+  .hours{width:100%;max-width:340px;border-collapse:collapse}
+  .hours td{padding:7px 0;font-size:16px;color:var(--ink-soft);border-bottom:1px solid rgba(13,58,43,.1)}
+  .hours td:last-child{text-align:right;font-family:'Oswald',sans-serif;color:var(--green)}
+  .hours .closed{color:var(--muted)}
+  .map{border-radius:var(--radius-md);overflow:hidden;min-height:340px;border:1px solid var(--green-line)}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0}
+  .cta-band{background:linear-gradient(135deg,var(--green),var(--green-soft));border-radius:var(--radius-lg);padding:var(--sp-12);text-align:center;margin-top:var(--sp-16)}
+  .cta-band h2{color:var(--cream);font-size:clamp(32px,5vw,48px);margin-bottom:var(--sp-3)}
+  .cta-band p{color:var(--cream-a80);margin-bottom:26px}
+
+  /* FOOTER */
+  footer{background:var(--green-deep);color:rgba(245,241,232,.7);padding:var(--sp-12) 0;text-align:center;border-top:1px solid var(--gold-a20)}
+  footer img{height:50px;margin-bottom:var(--sp-4)}
+  footer .social{display:flex;gap:var(--sp-5);justify-content:center;margin:var(--sp-4) 0}
+  footer .social a{font-family:'Oswald',sans-serif;letter-spacing:.05em;font-size:var(--fs-sm);color:var(--gold-light)}
+  footer small{display:block;margin-top:14px;font-size:12px;opacity:.6}
+
+  @media(max-width:860px){
+    .nav-links{position:fixed;inset:72px 0 auto 0;background:var(--green-deep);flex-direction:column;padding:var(--sp-6);gap:18px;display:none;border-bottom:1px solid var(--gold-a20)}
+    .nav-links.open{display:flex}
+    .nav-toggle{display:block}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-logo{order:-1}
+    .hero-logo .logo-panel{max-width:260px;padding:var(--sp-8)}
+    .svc-list,.rev-grid{grid-template-columns:1fr}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="nav-logo" href="#top" aria-label="Baro Barber, strona główna">Baro<em>Barber</em></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#o-nas">O nas</a>
+        <a href="#uslugi">Usługi</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="btn" href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Rezerwuj</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding-top:60px;padding-bottom:60px">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Barbershop · Gdańsk Wrzeszcz</div>
+        <h1>Strzyżenie i broda<br><em>z głową.</em></h1>
+        <p>U Bartosza Włocha umówisz strzyżenie, brodę albo pełne combo. Gdańsk Wrzeszcz, ul. Norblina.</p>
+        <div class="hero-cta">
+          <a class="btn" href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Rezerwuj na Booksy</a>
+          <a class="btn btn-outline" href="#uslugi">Zobacz cennik</a>
+        </div>
+        <div class="hero-rating">
+          <span class="stars">★★★★★</span>
+          <div><strong>5.0</strong> <small>na Booksy</small></div>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <div class="logo-panel">
+          <img src="assets/logo.png" alt="Baro Barber logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="o-nas">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img about-photo">
+        <img src="assets/bartosz.webp" alt="Bartosz Włoch, Baro Barber" onerror="this.onerror=null;this.src='assets/logo.png';this.style.objectFit='contain';this.parentElement.style.padding='40px';this.parentElement.style.background='linear-gradient(135deg,var(--green),var(--green-deep))'">
+      </div>
+      <div>
+        <div class="section-head" style="text-align:left;margin-bottom:0">
+          <div class="eyebrow">O nas</div>
+        </div>
+        <h2>Bartosz Włoch</h2>
+        <p>Prowadzę autorski barbershop w Gdańsku Wrzeszczu. Strzygę, ogarniam brodę i robię combo zawsze pod konkretną osobę, nie według jednego szablonu.</p>
+        <p>Wolę spokojną wizytę i powiem wprost, co sprawdzi się przy Twoich włosach, a co niekoniecznie. Sporo osób wraca i przyprowadza synów. Średnia 5.0 na Booksy.</p>
+        <div class="badges">
+          <span class="badge">Parking</span>
+          <span class="badge">Płatność kartą</span>
+          <span class="badge">Przyjazne dzieciom</span>
+          <span class="badge">Dostępne dla niepełnosprawnych</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="uslugi">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Cennik</div>
+      <h2>Usługi</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="svc-cat">
+      <h3>Strzyżenie włosów</h3>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-name">Strzyżenie włosów<small>50 min</small></span><span class="svc-dots"></span><span class="svc-price">100 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Strzyżenie (tylko nożyczkami)<small>1 godz</small></span><span class="svc-dots"></span><span class="svc-price">110 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Strzyżenie dziecięce<small>50 min</small></span><span class="svc-dots"></span><span class="svc-price">70 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Maszynką na jedną długość<small>30 min</small></span><span class="svc-dots"></span><span class="svc-price">50 zł</span></div>
+      </div>
+    </div>
+
+    <div class="svc-cat">
+      <h3>Broda</h3>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-name">Strzyżenie brody<small>40 min</small></span><span class="svc-dots"></span><span class="svc-price">70 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Strzyżenie brody z podgoleniem<small>1 godz</small></span><span class="svc-dots"></span><span class="svc-price">90 zł</span></div>
+      </div>
+    </div>
+
+    <div class="svc-cat">
+      <h3>Pakiety</h3>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-name">Combo (włosy + broda)<small>1 godz 30 min</small></span><span class="svc-dots"></span><span class="svc-price">150 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Combo z podgoleniem<small>1 godz 45 min</small></span><span class="svc-dots"></span><span class="svc-price">170 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Głowa na zero + broda<small>1 godz 15 min</small></span><span class="svc-dots"></span><span class="svc-price">100 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Combo (Tata + Syn)<small>2 godz 15 min</small></span><span class="svc-dots"></span><span class="svc-price">200 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Combo (Tata + 2 Synów)<small>2 godz 40 min</small></span><span class="svc-dots"></span><span class="svc-price">250 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Strzyżenie (Tata + Syn)<small>1 godz 30 min</small></span><span class="svc-dots"></span><span class="svc-price">150 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Strzyżenie (Tata + 2 Synów)<small>2 godz</small></span><span class="svc-dots"></span><span class="svc-price">220 zł</span></div>
+      </div>
+    </div>
+
+    <div class="svc-cat">
+      <h3>Dodatki</h3>
+      <div class="svc-list">
+        <div class="svc-item"><span class="svc-name">Cover brody<small>20 min</small></span><span class="svc-dots"></span><span class="svc-price">60 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Cover włosów<small>30 min</small></span><span class="svc-dots"></span><span class="svc-price">80 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Stylizacja włosów<small>30 min</small></span><span class="svc-dots"></span><span class="svc-price">40 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Kontur brody<small>30 min</small></span><span class="svc-dots"></span><span class="svc-price">30 zł</span></div>
+        <div class="svc-item"><span class="svc-name">Wosk (uszy, brwi, nos)<small>20 min</small></span><span class="svc-dots"></span><span class="svc-price">30 zł</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px">
+      <a class="btn" href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Umów wizytę</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="opinie">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Oceny prosto z Booksy</div>
+      <h2>Co mówią klienci</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>„Pierwsza wizyta i już wiem, że będę wracać. Świetna atmosfera, dobre porady, ultramega strzyżenie i duża otwartość — super!"</p>
+        <div class="who">— Damian</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>„Świetna obsługa i pełen profesjonalizm. Fryzura dokładnie taka, jaką chciałem. Miła atmosfera i duża dbałość o szczegóły."</p>
+        <div class="who">— Michał</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>„Bardzo dobry barbershop, naprawdę polecam. Barber świetnie robi swoją robotę, podchodzi do tematu z głową, widać że zależy mu na kliencie."</p>
+        <div class="who">— Misha</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a class="btn btn-outline" href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk#reviews-section" target="_blank" rel="noopener">Zobacz wszystkie opinie</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kontakt</div>
+      <h2>Odwiedź nas</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Adres</h3>
+        <p>Piotra Norblina 23 / 6<br>80-304 Gdańsk</p>
+        <h3>E-mail</h3>
+        <p><a href="mailto:bartosz.wloch@o2.pl">bartosz.wloch@o2.pl</a></p>
+        <h3>Instagram</h3>
+        <p><a href="https://www.instagram.com/baro.barbershop/" target="_blank" rel="noopener">@baro.barbershop</a></p>
+        <h3>Rezerwacja</h3>
+        <p><a href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Booksy, rezerwacja online 24/7</a></p>
+        <h3>Godziny otwarcia</h3>
+        <table class="hours">
+          <tr><td>Poniedziałek</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Wtorek</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Środa</td><td>09:00 – 15:00</td></tr>
+          <tr><td>Czwartek</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Piątek</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Sobota</td><td>09:00 – 15:00</td></tr>
+          <tr><td>Niedziela</td><td class="closed">Zamknięte</td></tr>
+        </table>
+      </div>
+      <div class="map">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=Piotra+Norblina+23,+80-304+Gda%C5%84sk&output=embed" title="Mapa, Baro Barber"></iframe>
+      </div>
+    </div>
+
+    <div class="cta-band">
+      <h2>Gotowy na nowy look?</h2>
+      <p>Zarezerwuj wizytę online, szybko i o dowolnej porze.</p>
+      <a class="btn" href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Rezerwuj na Booksy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <img src="assets/logo.png" alt="Baro Barber">
+    <div class="social">
+      <a href="https://booksy.com/pl-pl/307809_baro-barber-by-bartosz-wloch_barber-shop_20383_gdansk" target="_blank" rel="noopener">Booksy</a>
+      <a href="https://www.instagram.com/baro.barbershop/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p>Baro Barber by Bartosz Włoch · Piotra Norblina 23/6, Gdańsk</p>
+    <small>© 2026 Baro Barber. Wszelkie prawa zastrzeżone.</small>
+  </div>
+</footer>
+
+<script>
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  const setOpen=o=>{l.classList.toggle('open',o);t.setAttribute('aria-expanded',o)};
+  t.addEventListener('click',()=>setOpen(!l.classList.contains('open')));
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+</script>
+</body>
+</html>
